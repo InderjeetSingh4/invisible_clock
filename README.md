@@ -1,125 +1,81 @@
-# invisible_clock_web
-Real-Time Invisible Cloak with Python, OpenCV, and Flask
-This project is a web-based application that creates a real-time "invisible cloak" effect using a webcam. It uses computer vision techniques to detect a specific color in the video stream and replace it with a static background image, making objects of that color appear invisible.
+# 🪄 Invisible Cloak Web App
 
-How It Works
-The application is built on a client-server model:
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Backend (Python & Flask): A Flask web server uses OpenCV to access the webcam. When the application starts, it first captures a static image of the background. Then, for each subsequent frame from the webcam, it performs color detection. A mask is generated for the selected "invisible" color. This mask is then used to combine the live video feed with the initial background image, effectively replacing the colored object with the background. The resulting video is streamed to the frontend.
+A real-time web application that recreates the famous "Invisibility Cloak" effect using Computer Vision. This project detects a specific color in a live webcam stream and dynamically replaces it with a static background image, making objects of that color appear completely invisible.
 
-Frontend (HTML, CSS, JavaScript): A simple web interface displays the video stream. It provides controls for the user to start/stop the camera, recapture the background (if the lighting or scene changes), and select which color to make invisible from a color palette. JavaScript handles the user interactions and communicates with the Flask backend asynchronously using the Fetch API.
+> **💡 Note:** *[Add a GIF or screenshot of the app working here!]*
 
-Features
-Real-Time Video Processing: Creates the invisibility effect live from your webcam feed.
+---
 
-Dynamic Color Selection: Easily switch the color of the cloak (Red, Green, Blue, Yellow, Pink, White) via a user-friendly interface.
+## ✨ Features
 
-Interactive Web Controls: Buttons to start the camera, stop the camera, and recapture the background.
+* **🎥 Real-Time Video Processing:** Creates a zero-lag invisibility effect live from your webcam feed.
+* **🎨 Dynamic Color Selection:** Easily switch the target cloak color (Red, Green, Blue, Yellow, Pink, White) via a user-friendly web interface.
+* **⚙️ Interactive Web Controls:** Asynchronous buttons to start/stop the camera and recapture the background on the fly.
+* **🌙 Clean, Modern UI:** A responsive, dark-themed interface built for a seamless user experience.
+* **🔌 Flask-Powered Backend:** A robust and lightweight server architecture handling heavy video frame processing and frontend streaming.
 
-Clean, Modern UI: A responsive and dark-themed interface for a better user experience.
+---
 
-Flask-Powered Backend: A robust and simple backend to handle video processing and streaming.
+## 🧠 How It Works (Client-Server Architecture)
 
-Technologies Used
-Backend:
+1.  **Backend (Python, Flask, OpenCV):** When the app starts, OpenCV captures a clean, static image of the background. For every subsequent frame, it generates a color mask based on the user's selected "invisible" color. The app then blends the live feed with the static background, effectively erasing the colored object.
+2.  **Frontend (HTML, CSS, JS):** The UI displays the processed video stream. JavaScript handles asynchronous Fetch API calls to communicate with the Flask server without reloading the page, allowing for dynamic color switching and camera controls.
 
-Python
+---
 
-Flask
+## 🚀 Setup and Installation
 
-OpenCV-Python
+### Prerequisites
+* Python 3.7+
+* A connected webcam
 
-NumPy
+### Installation Steps
 
-Frontend:
+**1. Clone the repository:**
+`git clone https://github.com/InderjeetSingh4/invisible_cloak_web.git`
+`cd invisible_cloak_web`
 
-HTML5
+**2. Create and activate a virtual environment:**
+* **Windows:**
+`python -m venv venv`
+`.\venv\Scripts\activate`
 
-CSS3
+* **macOS / Linux:**
+`python3 -m venv venv`
+`source venv/bin/activate`
 
-JavaScript
+**3. Install the required dependencies:**
+`pip install Flask opencv-python numpy`
 
-Setup and Installation
-Follow these steps to run the project on your local machine.
+**4. Run the application:**
+`python app.py`
 
-Prerequisites:
+Open your web browser and navigate to `http://127.0.0.1:5000`.
 
-Python 3.7+
+---
 
-pip (Python package installer)
+## 🎮 How to Use
 
-A webcam connected to your computer.
+1.  Click the **"Start Camera"** button on the web interface.
+2.  The application will show a 5-second countdown. **Move completely out of the frame** so the system can capture a clean background image.
+3.  Step back into the frame and hold up an object matching the selected color (Default is Blue). Watch it disappear!
+4.  Use the color palette at the bottom to dynamically change the invisible color.
+5.  If the lighting changes, simply click **"Recapture"** and step out of the frame again.
 
-Installation Steps:
+---
 
-Clone the repository:
+## 📂 File Structure
 
-Bash
-
-git clone https://github.com/InderjeetSingh4/invisible_cloak_web.git
-cd invisible-cloak
-Create and activate a virtual environment (recommended):
-
-Windows:
-
-Bash
-
-python -m venv venv
-.\venv\Scripts\activate
-macOS / Linux:
-
-Bash
-
-python3 -m venv venv
-source venv/bin/activate
-Install the required Python packages:
-Create a requirements.txt file with the following content:
-
-Flask
-opencv-python
-numpy
-Then, install the packages:
-
-Bash
-
-pip install -r requirements.txt
-Run the Flask application:
-
-Bash
-
-python app.py
-Access the application:
-Open your web browser and go to http://127.0.0.1:5000 or the address shown in your terminal.
-
-How to Use
-Once the application is running, open the web page.
-
-Click the "Start Camera" button.
-
-The application will show a 5-second countdown. Move completely out of the camera's view during this time so it can capture a clean background image.
-
-After the background is captured, step back in front of the camera.
-
-Hold up an object that matches the selected color (the default is blue). The object should now appear "invisible," showing the background behind it.
-
-Click on the color swatches at the bottom to change which color is made invisible.
-
-If the lighting changes or you want to reset the background, click the "Recapture" button and move out of the frame again.
-
-Click "Off Camera" to stop the video feed.
-
-File Structure
+```text
 .
-├── app.py              # Main Flask application, handles all backend logic and video processing.
+├── app.py              # Main Flask server, video processing, and routing
 ├── static/
-│   ├── style.css       # CSS for styling the web interface.
-│   └── script.js       # JavaScript for frontend interactivity and API calls.
+│   ├── style.css       # Dark-themed UI styling
+│   └── script.js       # Frontend interactivity and Fetch API logic
 └── templates/
-    └── index.html      # The main HTML file for the user interface.
-
-
-
-
-
-
-
+    └── index.html      # Main user interface layout
