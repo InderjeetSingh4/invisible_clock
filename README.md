@@ -56,7 +56,7 @@ Clone the repository:
 
 Bash
 
-git clone https://github.com/ChiragAvasthi/invisible_cloak_web.git
+git clone https://github.com/InderjeetSingh4/invisible_cloak_web.git
 cd invisible-cloak
 Create and activate a virtual environment (recommended):
 
