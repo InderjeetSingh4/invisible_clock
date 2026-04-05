@@ -7,7 +7,6 @@
 
 A real-time web application that recreates the famous "Invisibility Clock" effect using Computer Vision. This project detects a specific color in a live webcam stream and dynamically replaces it with a static background image, making objects of that color appear completely invisible.
 
-> **💡 Note:** *[Add a GIF or screenshot of the app working here!]*
 
 ---
 
